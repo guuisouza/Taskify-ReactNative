@@ -10,45 +10,39 @@ export const List = styled.FlatList`
   margin-top: 20px;
 `;
 
-export const CreateTaskButton = styled(RectButton)`
-  justify-content: center;
-  align-items: center;
-  background: #2E867F;
-  margin-left: 10px;
-  padding: 0 12px;
-`; 
-
 export const TaskItem = styled.View`
     flex-direction: row;
     marginBottom: 10px;
     padding: 10px;
-    borderWidth: 1px;
-    borderColor: '#2E867F';
-    borderRadius: 5px;
+    border: 2px solid #E5BEEC;
+    padding: 4px;
+    background: #373A4E;
+    min-height: 200px;
+    borderRadius: 10px;
 `;
 
 export const ContentContainer = styled.View`
   flex-direction: column;
-  width: 75%;
+  flex: 1;
   height: 100%;
   padding-top: 5px
 `;
 
 export const InfoText = styled.Text`
-  font-size: 14px;
-  color: #35403C;
+  font-size: 18px;
+  font-weight: bold;
+  color: #E9DEEB;
 `
 
 export const InfoContainer = styled.View`
   flex: 1;
   flex-direction: column;
-  background: #fff;
   padding: 8px;
 `
 
 export const ButtonContainer = styled.View`
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   margin-right: 10px;
   padding: 10px;
 `
@@ -56,9 +50,12 @@ export const ButtonContainer = styled.View`
 export const ProfileButton = styled(RectButton)`
     justify-content: center;
     align-items: center;
-    background: #2E867F;
+    margin-top: 12px;
+    background: #2A2F4F;
     margin-left: 10px;
     padding: 15px 15px;
+    border-radius: 55px;
+    border: 1px solid #E5BEEC
 `;
 
 export const ProfileButtonText = styled.Text`
@@ -67,4 +64,3 @@ export const ProfileButtonText = styled.Text`
   color: #fff;
   text-transform: uppercase;
 `;
-
