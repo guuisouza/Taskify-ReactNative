@@ -19,11 +19,11 @@ export default function Routes() {
                         title: 'TASKIFY',
                         headerTitleAlign: 'center',
                         headerStyle: {
-                            backgroundColor: '#03DBCA',
+                            backgroundColor: '#2A2F4F',
                         },
                         headerTitleStyle: {
                             fontWeight: 'bold',
-                            color: '#fff',
+                            color: '#E9DEEB',
                         },
                     }}
                 />
@@ -34,29 +34,29 @@ export default function Routes() {
                         title: 'CRIAR TASK',
                         headerTitleAlign: 'center',
                         headerStyle: {
-                            backgroundColor: '#03DBCA',
+                            backgroundColor: '#2A2F4F',
                         },
                         headerTitleStyle: {
                             fontWeight: 'bold',
-                            color: '#fff',
+                            color: '#E9DEEB',
                         },
                     }}
                 />
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="editTask"
                     component={EditTask}
                     options={{
                         title: 'EDITAR TASK',
                         headerTitleAlign: 'center',
                         headerStyle: {
-                            backgroundColor: '#03DBCA',
+                            backgroundColor: '#2A2F4F',
                         },
                         headerTitleStyle: {
                             fontWeight: 'bold',
-                            color: '#fff',
+                            color: '#E9DEEB',
                         },
                     }}
-                /> */}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     )
