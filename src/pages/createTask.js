@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-
+import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { ProfileButton, ProfileButtonText } from '../styles/stylesCreateOrEditTask';
 export default class CreateTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
       description: '',
-      status: 'pendente', // Define o status como 'pendente' por padrão
+      status: 'Pendente', // Define o status da task como 'Pendente' por padrão
     };
   }
 
@@ -19,7 +19,7 @@ export default class CreateTask extends Component {
       return;
     }
     const newTask = {
-      id: new Date().getTime(), // Use um ID único, por exemplo, timestamp atual
+      id: new Date().getTime(), // ID único
       title: title,
       description: description,
       status: status,
@@ -35,20 +35,26 @@ export default class CreateTask extends Component {
       <View style={styles.container}>
         <Text style={styles.header}>Criar Nova Tarefa</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, styles.textArea1]}
           placeholder="Título da Tarefa"
+          placeholderTextColor= "#E9DEEB"
           onChangeText={(text) => this.setState({ title: text })}
           value={this.state.title}
+          color="#E9DEEB"
         />
         <TextInput
-          style={[styles.input, styles.textArea]}
+          style={[styles.input, styles.textArea2]}
           placeholder="Descrição da Tarefa"
+          placeholderTextColor= "#E9DEEB"
           onChangeText={(text) => this.setState({ description: text })}
           value={this.state.description}
+          color="#E9DEEB"
           multiline={true}
           numberOfLines={4}
         />
-        <Button title="Criar" onPress={this.handleCreateTask} />
+        <ProfileButton onPress={this.handleCreateTask}>
+          <ProfileButtonText>Criar Tarefa</ProfileButtonText>
+        </ProfileButton>
       </View>
     );
   }
@@ -58,20 +64,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: '#917FB3'
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#E9DEEB'
   },
   input: {
     marginBottom: 10,
     padding: 10,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 5,
+    borderRadius: 5
   },
-  textArea: {
+  textArea1: {
+    borderColor: '#E5BEEC'
+  },
+  textArea2: {
     height: 100,
+    borderColor: '#E5BEEC'
   },
 });
