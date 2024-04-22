@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
+  ContainerTasks,
   ContentContainer,
+  TitlePage,
   InfoContainer,
   InfoText,
   List,
   TaskItem,
   ButtonContainer,
-  ProfileButton,
-  ProfileButtonText
+  ProfileButtonText,
+  ProfileButtonActions
 } from '../styles/stylesTaskMain'
 
 export default class Tasks extends Component {
@@ -22,6 +24,7 @@ export default class Tasks extends Component {
     };
   }
 
+  // Async Storage
   async componentDidMount() {
     const tasksInfo = await AsyncStorage.getItem('tasks');
 
@@ -30,6 +33,7 @@ export default class Tasks extends Component {
     }
   }
 
+  // Async Storage
   async componentDidUpdate(_, prevState) {
     const { tasks } = this.state;
 
@@ -38,21 +42,22 @@ export default class Tasks extends Component {
     }
   }
 
-  // Função para adicionar uma nova tarefa à lista de tarefas
+  // Adicionar uma nova tarefa à lista de tarefas
   handleAddTask = (task) => {
     this.setState((prevState) => ({
       tasks: [...prevState.tasks, task],
-      newTask: task, // Atualiza newTask com a nova tarefa criada
+      newTask: task,
     }));
   };
 
-  // Função para navegar para a tela de criar nova tarefa
+  // Navegar para a tela de criar nova tarefa
   navigateToCreateTask = () => {
     this.props.navigation.navigate('createTask', {
       handleAddTask: this.handleAddTask
     });
   };
 
+  // Navegar para a tela de editar tarefa
   navigateToEdit = (task) => {
     this.props.navigation.navigate('editTask', { task });
   }
@@ -61,8 +66,8 @@ export default class Tasks extends Component {
     const { tasks } = this.state;
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.titlePage}>Tarefas</Text>
+      <ContainerTasks>
+        <TitlePage>Tarefas</TitlePage>
 
         <TouchableOpacity style={styles.buttonNewTask} onPress={this.navigateToCreateTask}>
           <Text style={styles.buttonText}>Nova Tarefa    +</Text>
@@ -86,7 +91,7 @@ export default class Tasks extends Component {
               </ContentContainer>
 
               <ButtonContainer>
-                <ProfileButton
+                <ProfileButtonActions
                   onPress={() => {
                     const updatedTasks = this.state.tasks.map(task => {
                       if (task.title === item.title) {
@@ -102,18 +107,18 @@ export default class Tasks extends Component {
                   <ProfileButtonText>
                     <Icon name="check" size={20} color="#fff" />
                   </ProfileButtonText>
-                </ProfileButton>
+                </ProfileButtonActions>
 
-                <ProfileButton
+                <ProfileButtonActions
                   onPress={() => {
                     this.props.navigation.navigate('editTask', { task: item });
                   }}>
                   <ProfileButtonText>
                     <Icon name="edit" size={20} color="#fff" />
                   </ProfileButtonText>
-                </ProfileButton>
+                </ProfileButtonActions>
 
-                <ProfileButton
+                <ProfileButtonActions
                   onPress={() => {
                     this.setState({
                       tasks: this.state.tasks.filter(
@@ -125,28 +130,17 @@ export default class Tasks extends Component {
                   <ProfileButtonText>
                     <Icon name="delete" size={20} color="#fff" />
                   </ProfileButtonText>
-                </ProfileButton>
+                </ProfileButtonActions>
               </ButtonContainer>
             </TaskItem>
           )}
         />
-      </View>
+      </ContainerTasks>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 25,
-    backgroundColor: '#917FB3'
-  },
-  titlePage: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#E9DEEB'
-  },
   buttonNewTask: {
     backgroundColor: '#2A2F4F',
     padding: 10,

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { ProfileButton, ProfileButtonText } from '../styles/stylesCreateOrEditTask';
+import { TextInput, StyleSheet } from 'react-native';
+import { Container, ProfileButton, ProfileButtonText, TitlePage } from '../styles/stylesCreateOrEditTask';
+
 export default class CreateTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
       description: '',
-      status: 'Pendente', // Define o status da task como 'Pendente' por padrão
+      status: 'Pendente',
     };
   }
 
-  // Função para criar uma nova tarefa
+  // Criar uma nova tarefa
   handleCreateTask = () => {
     const { title, description, status } = this.state;
     if (title.trim() === '') {
@@ -32,8 +33,8 @@ export default class CreateTask extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.header}>Criar Nova Tarefa</Text>
+      <Container>
+        <TitlePage>Criar Nova Tarefa</TitlePage>
         <TextInput
           style={[styles.input, styles.textArea1]}
           placeholder="Título da Tarefa"
@@ -55,7 +56,7 @@ export default class CreateTask extends Component {
         <ProfileButton onPress={this.handleCreateTask}>
           <ProfileButtonText>Criar Tarefa</ProfileButtonText>
         </ProfileButton>
-      </View>
+      </Container>
     );
   }
 }

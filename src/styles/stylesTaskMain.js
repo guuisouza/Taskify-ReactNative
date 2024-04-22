@@ -1,9 +1,17 @@
 import styled from 'styled-components/native';
 import {RectButton} from 'react-native-gesture-handler';
 
-export const Container = styled.View`
+export const ContainerTasks = styled.View`
   flex: 1;
   padding: 25px;
+  background: #917FB3;
+`;
+
+export const TitlePage = styled.Text`
+    fontSize: 24px;
+    fontWeight: bold;
+    marginBottom: 20px;
+    color: #E9DEEB
 `;
 
 export const List = styled.FlatList`
@@ -32,22 +40,22 @@ export const InfoText = styled.Text`
   font-size: 18px;
   font-weight: bold;
   color: #E9DEEB;
-`
+`;
 
 export const InfoContainer = styled.View`
   flex: 1;
   flex-direction: column;
   padding: 8px;
-`
+`;
 
 export const ButtonContainer = styled.View`
   flex-direction: column;
   justify-content: start;
   margin-right: 10px;
   padding: 10px;
-`
+`;
 
-export const ProfileButton = styled(RectButton)`
+export const ProfileButtonActions = styled(RectButton)`
     justify-content: center;
     align-items: center;
     margin-top: 12px;

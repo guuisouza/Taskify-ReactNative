@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { ProfileButton, ProfileButtonText } from '../styles/stylesCreateOrEditTask';
+import { TextInput, StyleSheet } from 'react-native';
+import { Container, TitlePage, ProfileButton, ProfileButtonText } from '../styles/stylesCreateOrEditTask';
 
 export default class EditTask extends Component {
     constructor(props) {
@@ -37,10 +37,10 @@ export default class EditTask extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.header}>Editar Tarefa</Text>
+            <Container>
+                <TitlePage>Editar Tarefa</TitlePage>
                 <TextInput
-                    style={[styles.input, styles.textArea]}
+                    style={[styles.input, styles.textArea1]}
                     placeholder="Título da Tarefa"
                     placeholderTextColor= "#E9DEEB"
                     onChangeText={(text) => this.setState({ title: text })}
@@ -48,7 +48,7 @@ export default class EditTask extends Component {
                     color="#E9DEEB"
                 />
                 <TextInput
-                    style={[styles.input, styles.textArea]}
+                    style={[styles.input, styles.textArea2]}
                     placeholder="Descrição da Tarefa"
                     placeholderTextColor= "#E9DEEB"
                     onChangeText={(text) => this.setState({ description: text })}
@@ -60,23 +60,12 @@ export default class EditTask extends Component {
                 <ProfileButton onPress={this.handleSaveTask}>
                     <ProfileButtonText>Salvar Alterações</ProfileButtonText>
                 </ProfileButton>
-            </View>
+            </Container>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#917FB3'
-    },
-    header: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-        color: '#E9DEEB'
-    },
     input: {
         height: 40,
         borderColor: 'gray',
@@ -84,7 +73,11 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         paddingHorizontal: 10,
     },
-    textArea: {
+    textArea1: {
         borderColor: '#E5BEEC'
-    },
+      },
+      textArea2: {
+        height: 100,
+        borderColor: '#E5BEEC'
+      },
 });
